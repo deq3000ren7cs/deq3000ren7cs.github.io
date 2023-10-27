@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>网页计算器4.0</title>
+    <style>
+        .o{color:orange}
+    </style>
+</head>
+<body style="text-align:center;background-color:gray">
+    <p class="o">
+        输入计算方法:
+        1.加法2.减法3.乘法4.除法5.乘方6.正方形面积7.圆形面积8.长方形面积
+        (只填序号)
+        <input id = "ottf" type="number">
+    </p>
+    <p class="o">
+        #n1输入数字:
+        <input id = "n1" type="number">
+    </p>
+    <p class="o">
+        #n2输入数字:
+        <input id="n2" type="number">
+    </p>
+    <button onclick="js()">开始计算</button>
+    <blod><h1 style="color:blue">结果：</h1></blod>
+    <h2 style="color:red" id="code"></h2>
+    <h3 style="color:yellow">计算正方形，圆形时把半径/边长填在n1</h3>
+    <h6>乘方可能有bug结果仅供参考<h6>
+<script>
+    function js(){
+        var ottf = parseInt(document.getElementById("ottf").value);
+        var n1 = parseInt(document.getElementById("n1").value);
+        var n2 = parseInt(document.getElementById("n2").value);
+        if (ottf == 1)
+        {
+            var code = n1+n2
+        }
+        if (ottf == 2)
+        {
+            var code = n1-n2
+        }
+        if (ottf == 3)
+        {
+            var code = n1*n2
+        }
+        if (ottf == 4)
+        {
+            var code = n1/n2
+        }
+        if (ottf == 5)
+        {
+             var code = power(n1,n2);
+        }
+        if (ottf == 6)
+        {
+            var code = n1*n1
+        }
+        if (ottf == 7)
+        {
+            var code = n1*n1*Math.PI
+        }
+        if (ottf == 8)
+        {
+            var code = n1*n2
+        }
+        document.getElementById("code").innerHTML = code;
+    }
+    function power(base, exponent) 
+    {
+        return Math.pow(base, exponent);
+    }
+</script>
+</body>
+</html>
