@@ -1,169 +1,102 @@
 <!DOCTYPE html>
+<html lang="zh-cmn-Hans">
 <head>
-<meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <style>
-    .red{color:red;font-weight:bold;font-style:italic;text-align:center}
-    .orange{color:orange;text-align:center}
-    .black{color:black;text-align:center;font-weight:lighter;font-style:oblique}
-    .all{color:orange}
-    .blue{color:blue}
-    .gray{color:gray}
-    body{width: 1326px;height: 272px;color:blue;text-align: center;background-image:url('minecraft.jpg');background-repeat:no-repeat;}
-    a{text-align:center;color:red;}
-	.js{text-align:center}
-    </style>
-    <title>陈溯的个人主页</title>
-	<link rel="shortcut icon" href="/pop.ico">
-	<script language="JavaScript">
-		function showtime() {
-			var now_time = new Date();
-			var hours = now_time.getHours();
-			var minutes = now_time.getMinutes();
-			var seconds = now_time.getSeconds();
-			var timer = "" + ((hours > 12) ? hours - 12 : hours);
-			timer += ((minutes < 10) ? ":0" : ":") + minutes;
-			timer += ((seconds < 10) ? ":0" : ":") + seconds;
-			timer += " " + ((hours > 12) ? "下午" : "上午");
-			document.clock.show.value = timer;
-			setTimeout("showtime()", 1000);
-		}
-	</script>
-	<script type="text/javascript">
-		function MM_popupMsg(msg) {
-			alert(msg);
-		}
-	</script>
-	</head>
-	<body onLoad="showtime()">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <a class="navbar-brand" href="https://deq3000ren7cs.github.io">首页</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
+	<meta charset="UTF-8">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="AIchatOS">
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	<!-- <link rel="manifest" href="/manifest.json" crossorigin="use-credentials"> -->
+	<link rel="apple-touch-icon" href="/favicon.ico">
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	<meta content="yes" name="apple-mobile-web-app-capable"/>
+	<link rel="apple-touch-icon" href="/favicon.ico">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover" />
+	<title>AIchatOS</title>
+	<script src="/jquery_220224.min.js"></script>
+	<script src="/interfaceacting220819.js"></script>
+	<script src="/antidomxss_v640.js"></script>
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		var hm = document.createElement("script");
+		hm.src = "hm.js?57740daa77b2b64fc03729c7f3eed65b";
+		var s = document.getElementsByTagName("script")[0]; 
+		s.parentNode.insertBefore(hm, s);
+		})();
+		</script>
+		<script type="module" crossorigin src="/index-a7f3e487.js"></script>
+		<link rel="stylesheet" href="index-b0f8cc2a.css">
+	<link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
+<body class="dark:bg-black">
+	<div id="app">
+		<style>
+			.loading-wrap {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+			}
 
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-		  <li class="nav-item active">
-			<a class="nav-link" href="https://code.xueersi.com">学而思编程社区 <span class="sr-only">(current)</span></a>
-		  </li>
-		  <li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-			  工具
-			</a>
-			<div class="dropdown-menu">
-			  <a class="dropdown-item" href="/网页计算器4.0.html">网页计算器</a>
-			  <a class="dropdown-item" href="/留言板.html">留言板</a>
-			</div>
-		  </li>
-		  <li class="nav-item dropdown">
-		  	<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-				游戏
-		  	</a>
-		  	<div class="dropdown-menu">
-		  		<a class="dropdown-item" href="/Eaglecraft.html">网页版mc（可联机）</a>
-				<a class="dropdown-item" href="https://4399.com">4399</a>
-				<a class="dropdown-item" href="https://crazygame.com">crazygames</a>
-		  	</div>
-		  </li>
-		  <li class="nav-item dropdown">
-		  	<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-		  		网页
-		  	</a>
-		  	<div class="dropdown-menu">
-		  		<a class="dropdown-item" href="https://im.popoim.com/im/web">泡泡im</a>
-				<a class="dropdown-item" href="/deqecraft工作室招人.html">工作室招人</a>
-				<a class="dropdown-item" href="https://deqecraftwr.github.io">deqecraft工作室官网</a>
-		  	</div>
-		  </li>
-		</ul>
-		<div class="js" style="color:gray">
-			<script language="JavaScript">
-				today = new Date();
-		
-				function initArray() {
-					this.length = initArray.arguments.length
-					for (var i = 0; i < this.length; i++)
-						this[i + 1] = initArray.arguments[i]
+			.balls {
+				width: 4em;
+				display: flex;
+				flex-flow: row nowrap;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.balls div {
+				width: 0.8em;
+				height: 0.8em;
+				border-radius: 50%;
+				background-color: #4b9e5f;
+			}
+
+			.balls div:nth-of-type(1) {
+				transform: translateX(-100%);
+				animation: left-swing 0.5s ease-in alternate infinite;
+			}
+
+			.balls div:nth-of-type(3) {
+				transform: translateX(-95%);
+				animation: right-swing 0.5s ease-out alternate infinite;
+			}
+
+			@keyframes left-swing {
+
+				50%,
+				100% {
+					transform: translateX(95%);
 				}
-				var d = new initArray(
-					"星期日",
-					"星期一",
-					"星期二",
-					"星期三",
-					"星期四",
-					"星期五",
-					"星期六");
-				document.write(
-					"<font style='font-size:9pt;font-family:宋体'>",
-					today.getYear() + 1900, "年",
-					today.getMonth() + 1, "月",
-					today.getDate(), "日",
-					d[today.getDay() + 1],
-					"</font>");
-			</script>
-			<form name="clock" onSubmit="0">
-				<input type="text" name="show" size="10" />
-			</form>
+			}
+
+			@keyframes right-swing {
+				50% {
+					transform: translateX(-95%);
+				}
+
+				100% {
+					transform: translateX(100%);
+				}
+			}
+
+			@media (prefers-color-scheme: dark) {
+				body {
+					background: #121212;
+				}
+			}
+		</style>
+		<div class="loading-wrap">
+			<div class="balls">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
-		<form class="form-inline my-2 my-lg-0">
-		  <input class="form-control mr-sm-2" type="text" placeholder="Search(还未完善)" aria-label="Search">
-		  <button class="btn btn-outline-success my-2 my-sm-0">搜索</button>
-        </form>
-	  </div>
-	</nav>
-    <h6 class = "gray">若是今朝同淋雪，此生也算共白头</h6>
-    <h2 class = "orange">qq:3445025294</h2>
-    <h2 class = "orange">目前在玩的mc服务器:</h2>
-    <h3 class = "orange">xing-yue.top</h3>
-    <h3 class = "orange">MC.LTD</h3>
-    <h3 class = "orange">wdsj.net</h3>
-    <h2>作者会的语言~</h2>
-    <h3>c++(入门%10)</h3>
-    <h3>JavaScript(入门%40)</h3>
-    <h3>CSS(入门%20)</h3>
-    <h3>html(精通%70)</h3>
-    <h3>Python(精通%60)</h3>
-    <h3>scratch(精通%50)</h3>
-    <h2 class = "all">源码破解器最新(停更)~</h2>
-    <a class = "btn btn-primary btn-sm" href = "https://code.xueersi.com/home/project/detail?lang=code&pid=48261561&version=offline&form=compiler&langType=python">源码破解器2.5</a>
-    <h2 class="all">网站系列</h2>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=48098423&version=webpy&form=python&langType=python">教你用学而思开网站</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=48454356&version=offline&form=python&langType=python">deqecraft工作室招人</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=48300906&version=offline&form=python&langType=python">圆的面积计算器</a>
-    <h2 class="all">MC系列</h2>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=39757732&version=offline&form=python&langType=python">mc+java8</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=39068117&version=offline&form=python&langType=python">我的世界启动器(有需要下载)</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=36711719&version=offline&form=python&langType=python">1.16.5枪械模组+pcl</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=35465233&version=offline&form=python&langType=python">MineCraft一键开服器</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=33806361&version=offline&form=python&langType=python">HMCL（不用java）</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=33806361&version=offline&form=python&langType=python">PCL（不用Java）</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=33806361&version=offline&form=python&langType=python">我的世界一键开服器</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=32161987&version=offline&form=python&langType=python">我的世界1.16.5存档2</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=32447260&version=offline&form=python&langType=python">我的世界存档（全）</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=32161984&version=offline&form=python&langType=python">我的世界1.16.5超牛逼存档</a>
-    <h3 class = "all">MC启动器系列</h3>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=31918775&version=offline&form=python&langType=python">我的世界启动器大全2</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=31904155&version=offline&form=python&langType=python">minecraft(改编下载六种启动器包括开服)</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=31920023&version=offline&form=python&langType=python">pcl(最新版)</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=31891175&version=offline&form=python&langType=python">我的世界Arime启动器</a>
-    <a class="btn btn-primary btn-sm" href="https://code.xueersi.com/home/project/detail?lang=code&pid=30879188&version=offline&form=python&langType=python">我的世界BakaXL启动器</a>
-    <h6 class = "black">还在修改中……<h6>
-    <h6 class="black">never 42 class</h6>
-    <h6 class="black">github make</h6>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script language = "JavaScript">
-        var cur = new Date();
-        var year = cur.getYear();
-        var months = cur.getMonth();
-        var day = cur.getDate();
-        var hours = cur.getHours();
-        var se = cur.getMinutes();
-        var de = cur.getSeconds();
-        alert("欢迎来到我的个人主页!")
-        alert("现在时间"+(months+1)+"月"+day+"日"+hours+"时"+se+"分"+de+"秒");
-	</script>
+	</div>
+	
 </body>
-    
+
 </html>
