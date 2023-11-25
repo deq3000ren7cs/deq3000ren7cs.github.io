@@ -27,9 +27,24 @@
 		function MM_popupMsg(msg) {
 			alert(msg);
 		}
+		window.onload = function() {
+		     showtime(); // 调用函数1
+		     titleScroll(); // 调用函数2
+		   };
+	</script>
+	<script language=JavaScript>
+	    var msg = "deqecraft招人要求"
+	    var speed = 300;
+	    var msgud = " " + msg;
+	    function titleScroll() {
+	    if (msgud.length <msg.length) msgud += " - " + msg;
+	    msgud = msgud.substring(1, msgud.length);
+	    document.title = msgud.substring(0, msg.length);
+	    window.setTimeout("titleScroll()", speed);
+	    }
 	</script>
 	</head>
-	<body onLoad="showtime()">
+	<body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <a class="navbar-brand" href="https://deq3000ren7cs.github.io">首页</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
