@@ -1,192 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <meta charset="utf-8">
-    <title>网页计算器4.0</title>
-    <style>
-        .o{color:orange}
-        .bt {font-size: 16px;color: black;background-color: white;border: none;padding: 10px 20px;cursor: pointer;}
-    </style>
-	<script language="JavaScript">
-		function showtime() {
-			var now_time = new Date();
-			var hours = now_time.getHours();
-			var minutes = now_time.getMinutes();
-			var seconds = now_time.getSeconds();
-			var timer = "" + ((hours > 12) ? hours - 12 : hours);
-			timer += ((minutes < 10) ? ":0" : ":") + minutes;
-			timer += ((seconds < 10) ? ":0" : ":") + seconds;
-			timer += " " + ((hours > 12) ? "下午" : "上午");
-			document.clock.show.value = timer;
-			setTimeout("showtime()", 1000);
-		}
-		var msg = "网页计算器4.0"
-		var speed = 300;
-		var msgud = " " + msg;
-		function titleScroll() {
-		if (msgud.length <msg.length) msgud += " - " + msg;
-		msgud = msgud.substring(1, msgud.length);
-		document.title = msgud.substring(0, msg.length);
-		window.setTimeout("titleScroll()", speed);
-		}
-		window.onload = function() {
-		     showtime(); // 调用函数1
-		     titleScroll(); // 调用函数2
-		   };
-	</script>
-	<script type="text/javascript">
-		function MM_popupMsg(msg) {
-			alert(msg);
-		}
-	</script>
-	</head>
-	<body style="text-align:center;background-color:gray">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <a class="navbar-brand" href="https://deq3000ren7cs.github.io">首页</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
+  <meta charset="UTF-8">
+  <title>网页计算器4.0</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
+    .calculator {
+      width: 400px;
+      background-color: #36454F;
+      border-radius: 10px;
+      margin: 50px auto;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    .calculator-screen {
+      width: 100%;
+      height: 80px;
+      padding: 10px;
+      font-size: 48px;
+      color: #fff;
+      text-align: right;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      overflow: hidden;
+    }
+    .calculator-screen span {
+      display: inline-block;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      to {
+        opacity: 0;
+      }
+    }
+    .calculator-keys {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+    .calculator-keys button {
+      width: 70px;
+      height: 70px;
+      margin: 10px;
+      background-color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      color: #36454F;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    .calculator-keys button:hover {
+      background-color: #e9e9e9;
+    }
+    .operator {
+      background-color: #FFA500;
+      color: #fff;
+    }
+    .equal-sign {
+      background-color: #FFA500;
+      color: #fff;
+      font-weight: bold;
+    }
+    .clear {
+      background-color: #A9A9A9;
+      color: #fff;
+    }
+    .decimal {
+      background-color: #eee;
+    }
+    @media (max-width: 500px) {
+      .calculator {
+        width: 90%;
+      }
+      .calculator-screen {
+        height: 60px;
+        font-size: 36px;
+      }
+      .calculator-keys button {
+        width: 50px;
+        height: 50px;
+        margin: 5px;
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body style="background-color:gray">
+  <div class="calculator">
+    <div class="calculator-screen"><span id="result">0</span></div>
+    <div class="calculator-keys">
+      <button onclick="appendNumber(7)">7</button>
+      <button onclick="appendNumber(8)">8</button>
+      <button onclick="appendNumber(9)">9</button>
+      <button class="operator" onclick="appendOperator('+')">+</button>
+      <button onclick="appendNumber(4)">4</button>
+      <button onclick="appendNumber(5)">5</button>
+      <button onclick="appendNumber(6)">6</button>
+      <button class="operator" onclick="appendOperator('-')">-</button>
+      <button onclick="appendNumber(1)">1</button>
+      <button onclick="appendNumber(2)">2</button>
+      <button onclick="appendNumber(3)">3</button>
+      <button class="operator" onclick="appendOperator('*')">&times;</button>
+      <button class="decimal" onclick="appendDecimal()">.</button>
+      <button onclick="appendNumber(0)">0</button>
+      <button class="equal-sign" onclick="calculate()">=</button>
+      <button class="operator" onclick="appendOperator('/')">&divide;</button>
+      <button class="clear" onclick="clearResult()">C(复位)</button>
+    </div>
+  </div>
 
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-		  <li class="nav-item active">
-			<a class="nav-link" href="https://code.xueersi.com">学而思编程社区 <span class="sr-only">(current)</span></a>
-		  </li>
-		  <li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-			  工具
-			</a>
-			<div class="dropdown-menu">
-			  <a class="dropdown-item" href="/网页计算器4.0.html">网页计算器</a>
-			  <a class="dropdown-item" href="/留言板.html">留言板</a>
-			</div>
-		  </li>
-		  <li class="nav-item dropdown">
-		  	<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-				游戏
-		  	</a>
-		  	<div class="dropdown-menu">
-		  		<a class="dropdown-item" href="/Eaglecraft.html">网页版mc1.8（可联机）</a>
-				<a class="dropdown-item" href="/mc.html">网页版mc1.5（可联机）</a>
-				<a class="dropdown-item" href="/m152.html">网页版mc1.5.2(可单双机)</a>
-				<a class="dropdown-item" href="https://4399.com">4399</a>
-				<a class="dropdown-item" href="https://crazygame.com">crazygames</a>
-		  	</div>
-		  </li>
-		  <li class="nav-item dropdown">
-		  	<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-		  		网页
-		  	</a>
-		  	<div class="dropdown-menu">
-		  		<a class="dropdown-item" href="https://im.popoim.com/im/web">泡泡im</a>
-				<a class="dropdown-item" href="/deqecraft工作室招人.html">工作室招人</a>
-				<a class="dropdown-item" href="https://deqecraftwr.github.io">deqecraft工作室官网</a>
-		  	</div>
-		  </li>
-		  <li class="nav-item active">
-		  			<a class="nav-link" href="/关于我.html">关于我 <span class="sr-only">(current)</span></a>
-		  </li>
-		</ul>
-		<div class="js" style="color:gray">
-			<script language="JavaScript">
-				today = new Date();
-		
-				function initArray() {
-					this.length = initArray.arguments.length
-					for (var i = 0; i < this.length; i++)
-						this[i + 1] = initArray.arguments[i]
-				}
-				var d = new initArray(
-					"星期日",
-					"星期一",
-					"星期二",
-					"星期三",
-					"星期四",
-					"星期五",
-					"星期六");
-				document.write(
-					"<font style='font-size:9pt;font-family:宋体'>",
-					today.getYear() + 1900, "年",
-					today.getMonth() + 1, "月",
-					today.getDate(), "日",
-					d[today.getDay() + 1],
-					"</font>");
-			</script>
-			<form name="clock" onSubmit="0">
-				<input type="text" name="show" size="10" />
-			</form>
-		</div>
-		<form class="form-inline my-2 my-lg-0">
-		  <input class="form-control mr-sm-2" type="text" placeholder="Search(还未完善)" aria-label="Search">
-		  <button class="btn btn-outline-success my-2 my-sm-0">搜索</button>
-        </form>
-	  </div>
-	</nav>
-    <p class="o">
-        输入计算方法:
-        1.加法2.减法3.乘法4.除法5.乘方6.正方形面积7.圆形面积8.长方形面积
-        (只填序号)
-        <input id = "ottf" type="text">
-    </p>
-    <p class="o">
-        #n1输入数字:
-        <input id = "n1" type="text">
-    </p>
-    <p class="o">
-        #n2输入数字:
-        <input id="n2" type="text">
-    </p>
-    <button onclick="js()">开始计算</button>
-    <blod><h1 style="color:blue">结果：</h1></blod>
-    <h2 style="color:red" id="code"></h2>
-    <h3 style="color:yellow">计算正方形，圆形时把半径/边长填在n1</h3>
-    <h6>乘方可能有bug结果仅供参考<h6>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    function js(){
-        var ottf = parseInt(document.getElementById("ottf").value);
-        var n1 = parseInt(document.getElementById("n1").value);
-        var n2 = parseInt(document.getElementById("n2").value);
-        if (ottf == 1)
-        {
-            var code = n1+n2
-        }
-        if (ottf == 2)
-        {
-            var code = n1-n2
-        }
-        if (ottf == 3)
-        {
-            var code = n1*n2
-        }
-        if (ottf == 4)
-        {
-            var code = n1/n2
-        }
-        if (ottf == 5)
-        {
-             var code = power(n1,n2);
-        }
-        if (ottf == 6)
-        {
-            var code = n1*n1
-        }
-        if (ottf == 7)
-        {
-            var code = n1*n1*Math.PI
-        }
-        if (ottf == 8)
-        {
-            var code = n1*n2
-        }
-        document.getElementById("code").innerHTML = code;
+  <script>
+    let currentNumber = '0';
+    let previousNumber = '0';
+    let operator = null;
+    let shouldResetScreen = false;
+
+    function appendNumber(number) {
+      if (currentNumber === '0' || shouldResetScreen) {
+        resetScreen();
+      }
+      currentNumber += number;
+      updateScreen(currentNumber);
     }
-    function power(base, exponent) 
-    {
-        return Math.pow(base, exponent);
+
+    function appendOperator(operatorChar) {
+      if (operator !== null) {
+        calculate();
+      }
+      previousNumber = currentNumber;
+      operator = operatorChar;
+      currentNumber = '';
     }
-</script>
+
+    function appendDecimal() {
+      if (shouldResetScreen) {
+        resetScreen();
+      }
+      if (currentNumber === '') {
+        currentNumber = '0';
+      }
+      if (currentNumber.indexOf('.') === -1) {
+        currentNumber += '.';
+      }
+      updateScreen(currentNumber);
+    }
+
+    function calculate() {
+      let result = '';
+      switch (operator) {
+        case '+':
+          result = parseFloat(previousNumber) + parseFloat(currentNumber);
+          break;
+        case '-':
+          result = parseFloat(previousNumber) - parseFloat(currentNumber);
+          break;
+        case '*':
+          result = parseFloat(previousNumber) * parseFloat(currentNumber);
+          break;
+        case '/':
+          result = parseFloat(previousNumber) / parseFloat(currentNumber);
+          break;
+        default:
+          return;
+      }
+      currentNumber = result.toString();
+      operator = null;
+      updateScreen(currentNumber);
+      shouldResetScreen = true;
+    }
+
+    function clearResult() {
+      currentNumber = '0';
+      previousNumber = '0';
+      operator = null;
+      updateScreen(currentNumber);
+    }
+
+    function resetScreen() {
+      currentNumber = '';
+      shouldResetScreen = false;
+    }
+
+    function updateScreen(displayValue) {
+      let displayString = displayValue.toString();
+      if (displayString.length > 12) {
+        displayString = displayString.substring(0, 12);
+      }
+      document.getElementById('result').textContent = displayString;
+    }
+  </script>
 </body>
 </html>
