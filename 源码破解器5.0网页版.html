@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <style>
-    .r{text-align:center;color:orange}
-    .c{text-align:center}
-    </style>
-    <meta charset="utf-8">
-    <title>deqecraft工作室招人</title>
-    <link rel="shortcut icon" href="deqecraft.png">
+    <title>源码破解器5.0网页版</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+	<link rel="shortcut icon" href="/pop.ico">
+	<script language=JavaScript>
+	    var msg = "C站源码破解器"
+	    var speed = 300;
+	    var msgud = " " + msg;
+	    function titleScroll() {
+	    if (msgud.length <msg.length) msgud += " - " + msg;
+	    msgud = msgud.substring(1, msgud.length);
+	    document.title = msgud.substring(0, msg.length);
+	    window.setTimeout("titleScroll()", speed);
+	    }
+	</script>
 	<script language="JavaScript">
 		function showtime() {
 			var now_time = new Date();
@@ -27,24 +34,13 @@
 		function MM_popupMsg(msg) {
 			alert(msg);
 		}
-		window.onload = function() {
-		     showtime(); // 调用函数1
-		     titleScroll(); // 调用函数2
-		   };
+		 window.onload = function() {
+		      showtime(); // 调用函数1
+		      titleScroll(); // 调用函数2
+		    };
 	</script>
-	<script language=JavaScript>
-	    var msg = "deqecraft招人要求"
-	    var speed = 300;
-	    var msgud = " " + msg;
-	    function titleScroll() {
-	    if (msgud.length <msg.length) msgud += " - " + msg;
-	    msgud = msgud.substring(1, msgud.length);
-	    document.title = msgud.substring(0, msg.length);
-	    window.setTimeout("titleScroll()", speed);
-	    }
-	</script>
-	</head>
-	<body>
+</head>
+<body style="text-align:center">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <a class="navbar-brand" href="https://deq3000ren7cs.github.io">首页</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,8 +67,8 @@
 				游戏
 		  	</a>
 		  	<div class="dropdown-menu">
-		  		<a class="dropdown-item" href="/Eaglecraft.html">网页版mc1.8（可联机）</a>
-				<a class="dropdown-item" href="/mc.html">网页版mc1.5（可联机）</a>
+		  		<a class="dropdown-item" href="/Eaglecraft.html">网页版mc1.8（只可联机）</a>
+				<a class="dropdown-item" href="/mc.html">网页版mc1.5（只可联机）</a>
 				<a class="dropdown-item" href="/m152.html">网页版mc1.5.2(可单双机)</a>
 				<a class="dropdown-item" href="https://4399.com">4399</a>
 				<a class="dropdown-item" href="https://crazygame.com">crazygames</a>
@@ -88,8 +84,8 @@
 				<a class="dropdown-item" href="https://deqecraftwr.github.io">deqecraft工作室官网</a>
 		  	</div>
 		  </li>
-		<li class="nav-item active">
-		  <a class="nav-link" href="/关于我.html">关于我 <span class="sr-only">(current)</span></a>
+		  <li class="nav-item active">
+		  			<a class="nav-link" href="/关于我.html">关于我 <span class="sr-only">(current)</span></a>
 		  </li>
 		</ul>
 		<div class="js" style="color:gray">
@@ -127,15 +123,45 @@
         </form>
 	  </div>
 	</nav>
-    <h2>招聘要求:</h2>
-    <h3 class="r">python,C++,goc,html,css,javascript<h3>
-    <h2 class="c">以上几种语言必须会两或三种</h2>
-    <h3 class="c">pythonL6优先选择</h3>
-    <h3 class="c">或者精通一种语言即可</h3>
-    <h2 style="color:red" class="c">注意scratch为工作室成员必会语言不算在精通之内</h2>
-    <h2 class="c">工作室logo</h2>
-    <img src="deqecraft.png">
+    <h1>C站源码破解器5.0网页版</h1>
+    
+    <select id="language">
+        <option value="1">Scratch</option>
+        <option value="2">Python</option>
+        <option value="3">C++</option>
+    </select>
+    <br>
+    <p style="color:red">选择正确的语言才能正常破解!</p>
+    <label for="url">请输入链接:</label>
+    <input type="text" id="url" size="50">
+    <br><br>
+    
+    <button onclick="extractAndRedirect()">提取pid并跳转</button>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+        function extractAndRedirect() {
+            var choice = document.getElementById("language").value;
+            var inputUrl = document.getElementById("url").value;
+            var pidMatch = inputUrl.match(/pid=(\d+)/);
+            
+            if (pidMatch) {
+                var pid = pidMatch[1];
+                
+                if (choice === "3") {
+                    var newUrl = "https://code.xueersi.com/ide/code/" + pid;
+                    window.open(newUrl, "_blank");
+                } else if (choice === "2") {
+                    var newUrl = "https://code.xueersi.com/ide/code/" + pid;
+                    window.open(newUrl, "_blank");
+                } else if (choice === "1") {
+                    var newUrl = "https://code.xueersi.com/scratch3/index.html?pid=" + pid + "&version=3.0&env=community";
+                    window.open(newUrl, "_blank");
+                }
+            } else {
+                alert("未找到pid值，请确保输入的链接格式正确");
+            }
+        }
+    </script>
 </body>
 </html>
