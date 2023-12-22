@@ -1,312 +1,549 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
+	<link rel="shortcut icon" href="/static/pop.ico">
+	<script src="/jQuery/jquery.min.js"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> -->
+	<link rel="stylesheet" href="/BootStrap/css/bootstrap.min.css">
+	<title>陈溯的个人主页</title>
     <style>
-    .red{color:red;font-weight:bold;font-style:italic;text-align:center}
-    .orange{color:orange;text-align:center}
-    .black{color:black;text-align:center;font-weight:lighter;font-style:oblique}
-    .all{color:orange}
-    .blue{color:blue}
-    .gray{color:gray}
-    body{background-repeat:no-repeat;opacity:0.8;width: 1326px;height: 272px;color:blue;text-align: center;}
-    a{text-align:center;color:red;}
-	.js{text-align:center}
-	.slideshow-container{max-width: 100%;position: relativemargin: auto;}
-	.mySlides {display: none;max-width: 100%;}
-    </style>
-    <title>陈溯的个人主页</title>
-	<link rel="shortcut icon" href="/pop.ico">
+        .tab-content {display: none;}
+        .active {display: block;}
+	    .red{color:red;font-weight:bold;font-style:italic;text-align:center}
+	    .orange{color:orange;text-align:center}
+	    .black{color:black;text-align:center;font-weight:lighter;font-style:oblique}
+	    .all{color:orange}
+	    .blue{color:blue}
+	    .gray{color:gray}
+	    body{background-repeat:no-repeat;opacity:0.8;width: 1326px;height: 272px;text-align: center;font-family: Arial, sans-serif;}
+	    a{text-align:center;color:red;}
+		.js{text-align:center}
+		.slideshow-container{max-width: 100%;position: relativemargin: auto;}
+		.mySlides {display: none;max-width: 100%;}
+		* {box-sizing: border-box;margin: 0;padding: 0;}
+		.calculator {width: 400px;background-color: #36454F;border-radius: 10px;margin: 50px auto;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);}
+		.calculator-screen {width: 100%;height: 80px;padding: 10px;font-size: 48px;color: #fff;text-align: right;border-top-left-radius: 10px;border-top-right-radius: 10px;overflow: hidden;}
+		.calculator-screen span {display: inline-block;animation: blink 1s infinite;}
+		@keyframes blink {to {opacity: 0;}}
+		.calculator-keys {display: flex;flex-wrap: wrap;justify-content: center;align-items: center;padding: 10px;}
+		.calculator-keys button {width: 70px;height: 70px;margin: 10px;background-color: #fff;border: none;border-radius: 50%;font-size: 24px;color: #36454F;box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);cursor: pointer;transition: all 0.2s ease-in-out;}
+		.calculator-keys button:hover {background-color: #e9e9e9;}
+		.operator {background-color: #FFA500;color: #fff;}
+		.equal-sign {background-color: #FFA500;color: #fff;font-weight: bold;}
+		.clear {background-color: #A9A9A9;color: #fff;}
+		.decimal {background-color: #eee;}
+		@media (max-width: 500px) {.calculator {width: 90%;}.calculator-screen {height: 60px;font-size: 36px;}.calculator-keys button {width: 50px;height: 50px;margin: 5px;font-size: 20px;}}
+		.r{color:orange}
+		.red{color:red;font-weight:bold;font-style:italic;}
+		.orange{color:orange;}
+		.black{color:black;font-weight:lighter;font-style:oblique}
+		.all{color:orange}
+		.blue{color:blue}
+		.gray{color:gray}
+		/* body{background-repeat:no-repeat;opacity:0.8;width: 1326px;height: 272px;color:blue;text-align: center;background-image:url('/minecraft.jpg');background-repeat:no-repeat;} */
+		.js{text-align:center}
+	</style>
 	<script language=JavaScript>
-	    var msg = "陈溯的个人主页"
-	    var speed = 300;
-	    var msgud = " " + msg;
-	    function titleScroll() {
-	    if (msgud.length <msg.length) msgud += " - " + msg;
-	    msgud = msgud.substring(1, msgud.length);
-	    document.title = msgud.substring(0, msg.length);
-	    window.setTimeout("titleScroll()", speed);
-	    }
+		var msg = "陈溯的个人主页"
+		var speed = 300;
+		var msgud = " " + msg;
+		function titleScroll() {
+			if (msgud.length <msg.length) msgud += " - " + msg;
+			msgud = msgud.substring(1, msgud.length);
+		    document.title = msgud.substring(0, msg.length);
+		    window.setTimeout("titleScroll()", speed);
+		    }
+			function showtime() {
+				var now_time = new Date();
+				var hours = now_time.getHours();
+				var minutes = now_time.getMinutes();
+				var seconds = now_time.getSeconds();
+				var timer = "" + ((hours > 12) ? hours - 12 : hours);
+				timer += ((minutes < 10) ? ":0" : ":") + minutes;
+				timer += ((seconds < 10) ? ":0" : ":") + seconds;
+				timer += " " + ((hours > 12) ? "下午" : "上午");
+				document.clock.show.value = timer;
+				setTimeout("showtime()", 1000);
+			}
+			function MM_popupMsg(msg) {
+				alert(msg);
+			}
+			 window.onload = function() {
+			      showtime(); // 调用函数1
+			      titleScroll(); // 调用函数2
+			    };
 	</script>
-	<script language="JavaScript">
-		function showtime() {
-			var now_time = new Date();
-			var hours = now_time.getHours();
-			var minutes = now_time.getMinutes();
-			var seconds = now_time.getSeconds();
-			var timer = "" + ((hours > 12) ? hours - 12 : hours);
-			timer += ((minutes < 10) ? ":0" : ":") + minutes;
-			timer += ((seconds < 10) ? ":0" : ":") + seconds;
-			timer += " " + ((hours > 12) ? "下午" : "上午");
-			document.clock.show.value = timer;
-			setTimeout("showtime()", 1000);
-		}
-	</script>
-	<script type="text/javascript">
-		function MM_popupMsg(msg) {
-			alert(msg);
-		}
-		 window.onload = function() {
-		      showtime(); // 调用函数1
-		      titleScroll(); // 调用函数2
-		    };
-	</script>
-	</head>
-	<body>
+	
+	
+	<!-- onclick="switchTab(event, 'home')" -->
+	<!-- onclick="switchTab(event, 'pj')" -->
+	<!-- onclick="switchTab(event, 'jsq')" -->
+	<!-- onclick="switchTab(event, 'zr')" -->
+	<!-- onclick="switchTab(event, 'myself')" -->
+	
+	
+</head>
+<body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <a class="navbar-brand" href="https://deq3000ren7cs.github.io">首页</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	  </button>
+		  <a class="navbar-brand" href="#" onclick="switchTab(event, 'home')">首页</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
 
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-		  <li class="nav-item active">
-			<a class="nav-link" href="https://code.xueersi.com">学而思编程社区 <span class="sr-only">(current)</span></a>
-		  </li>
-		  <li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-			  工具
-			</a>
-			<div class="dropdown-menu">
-			  <a class="dropdown-item" href="/网页计算器4.0.html">网页计算器</a>
-			  <a class="dropdown-item" href="/留言板.html">留言板</a>
-			  <a class="dropdown-item" href="/源码破解器5.0网页版.html">C站源码破解器5.0</a>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+			  <li class="nav-item active">
+				<a class="nav-link" href="https://code.xueersi.com">学而思编程社区 <span class="sr-only">(current)</span></a>
+			  </li>
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+				  工具
+				</a>
+				<div class="dropdown-menu">
+				  <a class="dropdown-item" href="#" onclick="switchTab(event, 'jsq')">网页计算器</a>
+				  <a class="dropdown-item" href="#" onclick="switchTab(event, 'pj')">C站源码破解器5.0</a>
+				</div>
+			  </li>
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+					游戏
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/Eaglecraft.html">网页版mc1.8（只可联机）</a>
+					<a class="dropdown-item" href="/mc.html">网页版mc1.5（只可联机）</a>
+					<a class="dropdown-item" href="/m152.html">网页版mc1.5.2(可单双机)</a>
+					<a class="dropdown-item" href="https://4399.com">4399</a>
+					<a class="dropdown-item" href="https://crazygame.com">crazygames</a>
+				</div>
+			  </li>
+			  <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+					网页
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="https://im.popoim.com/im/web">泡泡im</a>
+					<a class="dropdown-item" href="#" onclick="switchTab(event, 'zr')">工作室招人</a>
+					<a class="dropdown-item" href="https://deqecraftwr.github.io">deqecraft工作室官网</a>
+				</div>
+			  </li>
+			  <li class="nav-item active">
+					<a class="nav-link" href="#" onclick="switchTab(event, 'myself')">关于我 <span class="sr-only">(current)</span></a>
+			  </li>
+			</ul>
+			<div class="js" style="color:gray">
+				<script language="JavaScript">
+					today = new Date();
+			
+					function initArray() {
+						this.length = initArray.arguments.length
+						for (var i = 0; i < this.length; i++)
+							this[i + 1] = initArray.arguments[i]
+					}
+					var d = new initArray(
+						"星期日",
+						"星期一",
+						"星期二",
+						"星期三",
+						"星期四",
+						"星期五",
+						"星期六");
+					document.write(
+						"<font style='font-size:9pt;font-family:宋体'>",
+						today.getYear() + 1900, "年",
+						today.getMonth() + 1, "月",
+						today.getDate(), "日",
+						d[today.getDay() + 1],
+						"</font>");
+				</script>
+				<form name="clock" onSubmit="0">
+					<input type="text" name="show" size="10" />
+				</form>
 			</div>
-		  </li>
-		  <li class="nav-item dropdown">
-		  	<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-				游戏
-		  	</a>
-		  	<div class="dropdown-menu">
-		  		<a class="dropdown-item" href="/Eaglecraft.html">网页版mc1.8（只可联机）</a>
-				<a class="dropdown-item" href="/mc.html">网页版mc1.5（只可联机）</a>
-				<a class="dropdown-item" href="/m152.html">网页版mc1.5.2(可单双机)</a>
-				<a class="dropdown-item" href="https://4399.com">4399</a>
-				<a class="dropdown-item" href="https://crazygame.com">crazygames</a>
-		  	</div>
-		  </li>
-		  <li class="nav-item dropdown">
-		  	<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-		  		网页
-		  	</a>
-		  	<div class="dropdown-menu">
-		  		<a class="dropdown-item" href="https://im.popoim.com/im/web">泡泡im</a>
-				<a class="dropdown-item" href="/deqecraft工作室招人.html">工作室招人</a>
-				<a class="dropdown-item" href="https://deqecraftwr.github.io">deqecraft工作室官网</a>
-		  	</div>
-		  </li>
-		  <li class="nav-item active">
-		  			<a class="nav-link" href="/关于我.html">关于我 <span class="sr-only">(current)</span></a>
-		  </li>
-		</ul>
-		<div class="js" style="color:gray">
-			<script language="JavaScript">
-				today = new Date();
-		
-				function initArray() {
-					this.length = initArray.arguments.length
-					for (var i = 0; i < this.length; i++)
-						this[i + 1] = initArray.arguments[i]
-				}
-				var d = new initArray(
-					"星期日",
-					"星期一",
-					"星期二",
-					"星期三",
-					"星期四",
-					"星期五",
-					"星期六");
-				document.write(
-					"<font style='font-size:9pt;font-family:宋体'>",
-					today.getYear() + 1900, "年",
-					today.getMonth() + 1, "月",
-					today.getDate(), "日",
-					d[today.getDay() + 1],
-					"</font>");
-			</script>
-			<form name="clock" onSubmit="0">
-				<input type="text" name="show" size="10" />
+			<form class="form-inline my-2 my-lg-0">
+			  <input class="form-control mr-sm-2" type="text" placeholder="Search(还未完善)" aria-label="Search">
+			  <button class="btn btn-outline-success my-2 my-sm-0">搜索</button>
 			</form>
-		</div>
-		<form class="form-inline my-2 my-lg-0">
-		  <input class="form-control mr-sm-2" type="text" placeholder="Search(还未完善)" aria-label="Search">
-		  <button class="btn btn-outline-success my-2 my-sm-0">搜索</button>
-        </form>
-	  </div>
-	</nav>
-	<div class="slideshow-container">
-	  <div class="mySlides">
-		<img src="/mc.webp" style="width:100%" width="350" height="400">
-	  </div>
+		  </div>
+		</nav>
+	
+	
+	<!-- onclick="switchTab(event, 'home')" -->
+	<!-- onclick="switchTab(event, 'pj')" -->
+	<!-- onclick="switchTab(event, 'jsq')" -->
+	<!-- onclick="switchTab(event, 'zr')" -->
+	<!-- onclick="switchTab(event, 'myself')" -->
+	
+	
+    <div id="home" class="tab-content active">
+		<div class="slideshow-container">
+		  <div class="mySlides">
+			<img src="/static/mc.webp" style="width:100%" width="350" height="400">
+		  </div>
 
-	  <div class="mySlides">
-		<img src="/mc2.webp" style="width:100%" width="350" height="400">
-	  </div>
+		  <div class="mySlides">
+			<img src="/static/mc2.webp" style="width:100%" width="350" height="400">
+		  </div>
 
-	  <div class="mySlides">
-		<img src="/mc3.webp" style="width:100%" width="350" height="400">
-	  </div>
-	</div>
-	<br>
-	<br>
-	<div class="alert alert-success" role="alert">
-	  <h4 class="alert-heading">欢迎!</h4>
-	  <p>此墙是挑选C站精品转载过来的（如有不喜，联系qq：3445205294删除或C站搜索陈溯联系我）</p>
-	  <hr>
-	  <p class="mb-0">投稿请联系我！qq：3445205294删除或C站搜索陈溯联系我</p>
-	  <p class="mb-0">还在开发中！功能可能欠缺！</p>
-	</div>
-	<div class="row">
-		<div class="col-3">
-			<div class="card mb-3" style="max-width: 540px;">
-			  <div class="row no-gutters">
-				<div class="col-md-4">
-				  <img src="https://livefile.xesimg.com/programme/assets/15f717aedb110bf74d2aa784fedc7575.jpg?x-oss-process=image/resize,w_750/format,webp" width="120" height="190">
-				</div>
-				<div class="col-md-8">
-				  <div class="card-body">
-					<h5 class="card-title">#教程#如何任意修改网页内容</h5>
-					<p class="card-text">转载自 <a href="https://code.xueersi.com/space/33880269">白</a></p>
-					<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=19393334&version=offline&form=python&langType=python">点此处跳转</a>
-					<p class="card-text"><small class="text-muted">Last updated 15 days ago</small></p>
-				  </div>
-				</div>
-			  </div>
-			</div>
+		  <div class="mySlides">
+			<img src="/static/mc3.webp" style="width:100%" width="350" height="400">
+		  </div>
 		</div>
-		<div class="col-3">
-			<div class="card mb-3" style="max-width: 540px;">
-			  <div class="row no-gutters">
-				<div class="col-md-4">
-				  <img src="https://livefile.xesimg.com/programme/assets/994cef8e68b50fc52b02d76bd8e6ce64.jpg?x-oss-process=image/resize,w_750/format,webp" width="120" height="190">
-				</div>
-				<div class="col-md-8">
-				  <div class="card-body">
-					<h5 class="card-title">#原创#粒子旋涡特效（拿去做封面）</h5>
-					<p class="card-text">转载自 <a href="https://code.xueersi.com/space/23588936">vivi晴</a> </p>
-					<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=40447149&version=offline&form=python&langType=python">点此处跳转</a>
-					<p class="card-text"><small class="text-muted">Last updated 20 mins ago</small></p>
-				  </div>
-				</div>
-			  </div>
-			</div>
+		<br>
+		<br>
+		<div class="alert alert-success" role="alert">
+		  <h4 class="alert-heading">欢迎!</h4>
+		  <p>此墙是挑选C站精品转载过来的（如有不喜，联系qq：3445205294删除或C站搜索陈溯联系我）</p>
+		  <hr>
+		  <p class="mb-0">投稿请联系我！qq：3445205294删除或C站搜索陈溯联系我</p>
+		  <p class="mb-0">还在开发中！功能可能欠缺！</p>
 		</div>
-		<div class="col-3">
-			<div class="card mb-3" style="max-width: 540px;">
-			  <div class="row no-gutters">
-				<div class="col-md-4">
-				  <img src="https://livefile.xesimg.com/programme/assets/2798b916119b7ad1ccd4323d90729742.gif?x-oss-process=image/resize,w_750/format,webp" width="120" height="190">
-				</div>
-				<div class="col-md-8">
-				  <div class="card-body">
-					<h5 class="card-title">#原创#THW 教程 逻辑系统</h5>
-					<p class="card-text">转载自 <a href="https://code.xueersi.com/space/2731368">林林</a> </p>
-					<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=48161892&version=offline&form=python&langType=python">点此处跳转</a>
-					<p class="card-text"><small class="text-muted">Last updated 22 mins ago</small></p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		</div>
-		<div class="col-3">
-			<div class="card mb-3" style="max-width: 540px;">
-			  <div class="row no-gutters">
-				<div class="col-md-4">
-				  <img src="https://livefile.xesimg.com/programme/python_assets/5336ff5cbdb0b364ba0ef505fc77b085.png" width="120" height="190">
-				</div>
-				<div class="col-md-8">
-				  <div class="card-body">
-					<h5 class="card-title">#转载#MC农场主2.0</h5>
-					<p class="card-text">该作品原作者不明</p>
-					<a href="https://code.xueersi.com/home/project/detail?lang=scratch&pid=23630347&version=3.0&langType=scratch">点此处跳转</a>
-					<p class="card-text"><small class="text-muted">Last updated 21 mins ago</small></p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		</div>
-		<div class="col-3">
-			<div class="card mb-3" style="max-width: 540px;">
-			  <div class="row no-gutters">
-				<div class="col-md-4">
-				  <img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
-				</div>
-				<div class="col-md-8">
-				  <div class="card-body">
-					<h5 class="card-title">#原创#仿真计算器</h5>
-					<p class="card-text">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
-					<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49457919&version=offline&form=python&langType=python">点此处跳转</a>
-					<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		</div>
-		<div class="col-3">
-			<div class="card mb-3" style="max-width: 540px;">
-			  <div class="row no-gutters">
-				<div class="col-md-4">
-				  <img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
-				</div>
-				<div class="col-md-8">
-				  <div class="card-body">
-					<h5 class="card-title">#原创#源码破解器5.0网页版</h5>
-					<p class="card-text">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
-					<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49758773&version=offline&form=python&langType=python">点此处跳转</a>
-					<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		</div>
-		<div class="col-3">
-			<div class="card mb-3" style="max-width: 540px;">
-			  <div class="row no-gutters">
-				<div class="col-md-4">
-				  <img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
-				</div>
-				<div class="col-md-8">
-				  <div class="card-body">
-					<h5 class="card-title">#原创#源码破解器5.0（有UI）</h5>
-					<p class="card-text">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
-					<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49758545&version=offline&form=python&langType=python">点此处跳转</a>
-					<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
-					<p class="card-y=text"><small class="text-muted"><a href="https://livefile.xesimg.com/programme/python_assets/85230b692f2397dbfcae05d5e9dd0524.exe">下载</a>
-				  </div>
-				</div>
-			  </div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-3">
-			<div class="card mb-3" style="max-width: 540px;">
-				<div class="row no-gutters">
+		<div class="row">
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
 					<div class="col-md-4">
-						<img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
+					  <img src="https://livefile.xesimg.com/programme/assets/15f717aedb110bf74d2aa784fedc7575.jpg?x-oss-process=image/resize,w_750/format,webp" width="120" height="190">
 					</div>
 					<div class="col-md-8">
-						<div class="card-body">
-							<h5 class="card-title" style="color:blue">#原创#加密程序（有ui）</h5>
-							<h6>
-								<p class="card-text" style="color:red;">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
-								<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49768603&version=offline&form=python&langType=python">点此处跳转</a>
-								<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
-								<p class="card-y=text"><small class="text-muted"><a href="https://livefile.xesimg.com/programme/python_assets/5336385511d3db0d78706c4b61f0ec55.exe">下载</a>
-							</h6>
+					  <div class="card-body">
+						<h5 class="card-title">#教程#如何任意修改网页内容</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/33880269">白</a></p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=19393334&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 15 days ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/assets/994cef8e68b50fc52b02d76bd8e6ce64.jpg?x-oss-process=image/resize,w_750/format,webp" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#粒子旋涡特效（拿去做封面）</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/23588936">vivi晴</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=40447149&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 20 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/assets/2798b916119b7ad1ccd4323d90729742.gif?x-oss-process=image/resize,w_750/format,webp" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#THW 教程 逻辑系统</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/2731368">林林</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=48161892&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 22 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/python_assets/5336ff5cbdb0b364ba0ef505fc77b085.png" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#转载#MC农场主2.0</h5>
+						<p class="card-text">该作品原作者不明</p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=scratch&pid=23630347&version=3.0&langType=scratch">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 21 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#仿真计算器</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49457919&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#源码破解器5.0网页版</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49758773&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#源码破解器5.0（有UI）</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49758545&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+						<p class="card-y=text"><small class="text-muted"><a href="https://livefile.xesimg.com/programme/python_assets/85230b692f2397dbfcae05d5e9dd0524.exe">下载</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+							<img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title" style="color:blue">#原创#加密程序（有ui）</h5>
+								<h6>
+									<p class="card-text" style="color:red;">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
+									<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49768603&version=offline&form=python&langType=python">点此处跳转</a>
+									<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+									<p class="card-y=text"><small class="text-muted"><a href="https://livefile.xesimg.com/programme/python_assets/5336385511d3db0d78706c4b61f0ec55.exe">下载</a>
+								</h6>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<br>
+		<br>
+    </div>
+	
+	
+	<!-- onclick="switchTab(event, 'home')" -->
+	<!-- onclick="switchTab(event, 'pj')" -->
+	<!-- onclick="switchTab(event, 'jsq')" -->
+	<!-- onclick="switchTab(event, 'zr')" -->
+	<!-- onclick="switchTab(event, 'myself')" -->
+	
+	
+    <div id="pj" class="tab-content">
+		<h1>C站源码破解器5.0网页版</h1>
+		
+		<select id="language">
+			<option value="1">Scratch</option>
+			<option value="2">Python</option>
+			<option value="3">C++</option>
+		</select>
+		<br>
+		<h3 style="color:red">选择正确的语言才能正常破解!</h3>
+		<label for="url">请输入链接:</label>
+		<input type="text" id="url" size="50">
+		<br><br>
+		
+		<button onclick="extractAndRedirect()">提取pid并跳转</button>
+			<script>
+			function extractAndRedirect() {
+				var choice = document.getElementById("language").value;
+				var inputUrl = document.getElementById("url").value;
+				var pidMatch = inputUrl.match(/pid=(\d+)/);
+				
+				if (pidMatch) {
+					var pid = pidMatch[1];
+					
+					if (choice === "3") {
+						var newUrl = "https://code.xueersi.com/ide/code/" + pid;
+						window.open(newUrl, "_blank");
+					} else if (choice === "2") {
+						var newUrl = "https://code.xueersi.com/ide/code/" + pid;
+						window.open(newUrl, "_blank");
+					} else if (choice === "1") {
+						var newUrl = "https://code.xueersi.com/scratch3/index.html?pid=" + pid + "&version=3.0&env=community";
+						window.open(newUrl, "_blank");
+					}
+				} else {
+					alert("未找到pid值，请确保输入的链接格式正确");
+				}
+			}
+		</script>
+    </div>
+
+    <div id="jsq" class="tab-content">
+	  <div class="calculator">
+		<div class="calculator-screen"><span id="result">0</span></div>
+		<div class="calculator-keys">
+		  <button onclick="appendNumber(7)">7</button>
+		  <button onclick="appendNumber(8)">8</button>
+		  <button onclick="appendNumber(9)">9</button>
+		  <button class="operator" onclick="appendOperator('+')">+</button>
+		  <button onclick="appendNumber(4)">4</button>
+		  <button onclick="appendNumber(5)">5</button>
+		  <button onclick="appendNumber(6)">6</button>
+		  <button class="operator" onclick="appendOperator('-')">-</button>
+		  <button onclick="appendNumber(1)">1</button>
+		  <button onclick="appendNumber(2)">2</button>
+		  <button onclick="appendNumber(3)">3</button>
+		  <button class="operator" onclick="appendOperator('*')">&times;</button>
+		  <button class="decimal" onclick="appendDecimal()">.</button>
+		  <button onclick="appendNumber(0)">0</button>
+		  <button class="equal-sign" onclick="calculate()">=</button>
+		  <button class="operator" onclick="appendOperator('/')">&divide;</button>
+		  <button class="clear" onclick="clearResult()">C(复位)</button>
+		</div>
+	  </div>
+	  <script>
+		let currentNumber = '0';
+		let previousNumber = '0';
+		let operator = null;
+		let shouldResetScreen = false;
+
+		function appendNumber(number) {
+		  if (currentNumber === '0' || shouldResetScreen) {
+			resetScreen();
+		  }
+		  currentNumber += number;
+		  updateScreen(currentNumber);
+		}
+
+		function appendOperator(operatorChar) {
+		  if (operator !== null) {
+			calculate();
+		  }
+		  previousNumber = currentNumber;
+		  operator = operatorChar;
+		  currentNumber = '';
+		}
+
+		function appendDecimal() {
+		  if (shouldResetScreen) {
+			resetScreen();
+		  }
+		  if (currentNumber === '') {
+			currentNumber = '0';
+		  }
+		  if (currentNumber.indexOf('.') === -1) {
+			currentNumber += '.';
+		  }
+		  updateScreen(currentNumber);
+		}
+
+		function calculate() {
+		  let result = '';
+		  switch (operator) {
+			case '+':
+			  result = parseFloat(previousNumber) + parseFloat(currentNumber);
+			  break;
+			case '-':
+			  result = parseFloat(previousNumber) - parseFloat(currentNumber);
+			  break;
+			case '*':
+			  result = parseFloat(previousNumber) * parseFloat(currentNumber);
+			  break;
+			case '/':
+			  result = parseFloat(previousNumber) / parseFloat(currentNumber);
+			  break;
+			default:
+			  return;
+		  }
+		  currentNumber = result.toString();
+		  operator = null;
+		  updateScreen(currentNumber);
+		  shouldResetScreen = true;
+		}
+
+		function clearResult() {
+		  currentNumber = '0';
+		  previousNumber = '0';
+		  operator = null;
+		  updateScreen(currentNumber);
+		}
+
+		function resetScreen() {
+		  currentNumber = '';
+		  shouldResetScreen = false;
+		}
+
+		function updateScreen(displayValue) {
+		  let displayString = displayValue.toString();
+		  if (displayString.length > 12) {
+			displayString = displayString.substring(0, 12);
+		  }
+		  document.getElementById('result').textContent = displayString;
+		}
+	  </script>
+    </div>
+
+    <div id="zr" class="tab-content">
+		<h2>招聘要求:</h2>
+		<h3 class="r">python,C++,goc,html,css,javascript<h3>
+		<h2 class="c">以上几种语言必须会两或三种</h2>
+		<h3 class="c">pythonL6优先选择</h3>
+		<h3 class="c">或者精通一种语言即可</h3>
+		<h2 style="color:red" class="c">注意scratch为工作室成员必会语言不算在精通之内</h2>
+		<h2 class="c">工作室logo</h2>
+		<img src="/static/deqecraft.png">
 	</div>
-	<br>
-	<br>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-   <script language = "JavaScript">
+	
+	<div id="myself" class="tab-content" style="background-repeat:no-repeat;opacity:0.8;color:blue;text-align: center;background-repeat:no-repeat;} ">
+	    <!--;background-image:url('/1h.webp')-->
+		<h2 class = "orange">qq:3445025294</h2>
+		<h2 class = "orange">目前在玩的mc服务器:</h2>
+		<h3 class = "orange">xing-yue.top(已死)</h3>
+		<h3 class = "orange">MC.LTD</h3>
+		<h3 class = "orange">wdsj.net</h3>
+		<h2>我会的语言~</h2>
+		<h3>c++(入门%10)</h3>
+		<h3>JavaScript(入门%40)</h3>
+		<h3>CSS(入门%40)</h3>
+		<h3>html(精通%70)</h3>
+		<h3>Python(精通%60)</h3>
+		<h3>scratch(精通%50)</h3>
+	</div>
+    <script>
+        function switchTab(event, tabId) {
+            // 阻止默认链接行为
+            event.preventDefault();
+
+            // 隐藏所有的选项卡内容
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // 显示当前选中的选项卡内容
+            document.getElementById(tabId).classList.add("active");
+        }
         var cur = new Date();
         var year = cur.getYear();
         var months = cur.getMonth();
@@ -317,7 +554,7 @@
         alert("欢迎来到我的个人主页!")
         alert("现在时间"+(months+1)+"月"+day+"日"+hours+"时"+se+"分"+de+"秒");
         alert("本作品因为背景图和bootstrap加载可能会很慢请稍等")
-        alert("太慢？复制该网址进入备用线路：https://42d30581-preview-free.lightly.teamcode.com/deq3000ren/index.html?server=preview&dcsId=42d30581&token=b00L89n7RquVYJJ5CiGeuw")
+        alert("太慢？复制该网址进入备用线路：https://chensu.my.enjoycode.com")
 		  var slideIndex = 0;
 		  showSlides();
 		function showSlides() {
@@ -331,7 +568,8 @@
 		    slides[slideIndex-1].style.display = "block";
 			setTimeout(showSlides, 2000); // 切换时间间隔为 2 秒
 		}
-        </script>
+    </script>
+    <script src="/Bootstrap/js/bootstrap.min.js"></script>
 </body>
-    
+
 </html>
