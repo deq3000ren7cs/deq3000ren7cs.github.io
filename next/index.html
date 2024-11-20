@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
-	<link rel="shortcut icon" href="/next/static/pop.ico">
-	<script src="/jQuery/jquery.min.js"></script>
+	<link rel="shortcut icon" href="/static/pop.ico">
+	<script src="/static/jQuery/jquery.min.js"></script>
 <!--    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> -->
-	<link rel="stylesheet" href="/Bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/Bootstrap/css/bootstrap.min.css">
 	<title>陈溯的个人主页</title>
     <style>
         .tab-content {display: none;}
@@ -98,7 +98,7 @@
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 			  <li class="nav-item active">
-				<a class="nav-link" href="https://code.xueersi.com" target="_blank">学而思编程社区 <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="https://code.xueersi.com">学而思编程社区 <span class="sr-only">(current)</span></a>
 			  </li>
 			  <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -114,13 +114,11 @@
 					游戏
 				</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="https://livefile.xesimg.com/programme/python_assets/7177e6bbc910de98e90d1b5fcfb9bc62.html" target="_blank">网页版mc1.8（只可联机）</a>
-					<a class="dropdown-item" href="https://livefile.xesimg.com/programme/python_assets/4c8c9e3a26eddec199ed1b85c7702f72.html" target="_blank">网页版mc1.5（只可联机）</a>
-					<a class="dropdown-item" href="https://livefile.xesimg.com/programme/python_assets/16eefbf570431002175d2231e4ed54f8.html" target="_blank">网页版mc1.5.2(可单双机)</a>
-					<a class="dropdown-item" href="https://4399.com" target="_blank">4399</a>
-					<a class="dropdown-item" target="_blank" href="https://kirka.io">kirka</a>
-					<a class="dropdown-item" href="https://crazygame.com" target="_blank">crazygames</a>
-					<a class="dropdown-item" href="https://voxiom.io/" target="_blank">voxiom</a>
+					<a class="dropdown-item" href="https://livefile.xesimg.com/programme/python_assets/7177e6bbc910de98e90d1b5fcfb9bc62.html">网页版mc1.8（只可联机）</a>
+					<a class="dropdown-item" href="https://livefile.xesimg.com/programme/python_assets/4c8c9e3a26eddec199ed1b85c7702f72.html">网页版mc1.5（只可联机）</a>
+					<a class="dropdown-item" href="https://livefile.xesimg.com/programme/python_assets/16eefbf570431002175d2231e4ed54f8.html">网页版mc1.5.2(可单双机)</a>
+					<a class="dropdown-item" href="https://4399.com">4399</a>
+					<a class="dropdown-item" href="https://crazygame.com">crazygames</a>
 				</div>
 			  </li>
 			  <li class="nav-item dropdown">
@@ -128,14 +126,14 @@
 					网页
 				</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="https://im.popoim.com/im/web" target="_blank">泡泡im</a>
+					<a class="dropdown-item" href="https://im.popoim.com/im/web">泡泡im</a>
 					<a class="dropdown-item" href="#" onclick="switchTab(event, 'zr')">工作室招人</a>
-					<a class="dropdown-item" href="https://deqecraftwr.github.io" target="_blank">deqecraft工作室官网</a>
+					<a class="dropdown-item" href="https://deqecraftwr.github.io">deqecraft工作室官网</a>
 				</div>
 			  </li>
-			  <!--<li class="nav-item active">-->
-					<!--<a class="nav-link" href="#" onclick="switchTab(event, 'myself')">关于我 <span class="sr-only">(current)</span></a>-->
-			  <!--</li>-->
+			  <li class="nav-item active">
+					<a class="nav-link" href="#" onclick="switchTab(event, 'myself')">关于我 <span class="sr-only">(current)</span></a>
+			  </li>
 			</ul>
 			<div class="js" style="color:gray">
 				<script language="JavaScript">
@@ -166,8 +164,8 @@
 					<input type="text" name="show" size="10" />
 				</form>
 			</div>
-			<form class="form-inline my-2 my-lg-0">
-			  <input class="form-control mr-sm-2" type="text" placeholder="Search(还未完善)" aria-label="Search">
+			<form class="form-inline my-2 my-lg-0" action="/input">
+			  <input name="input" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
 			  <button class="btn btn-outline-success my-2 my-sm-0">搜索</button>
 			</form>
 		  </div>
@@ -184,20 +182,172 @@
     <div id="home" class="tab-content active">
 		<div class="slideshow-container">
 		  <div class="mySlides">
-			<img src="/next/static/mc.webp" style="width:100%" width="350" height="400">
+			<img src="/static/mc.webp" style="width:100%" width="350" height="400">
 		  </div>
 
 		  <div class="mySlides">
-			<img src="/next/static/mc2.webp" style="width:100%" width="350" height="400">
+			<img src="/static/mc2.webp" style="width:100%" width="350" height="400">
 		  </div>
 
 		  <div class="mySlides">
-			<img src="/next/static/mc3.webp" style="width:100%" width="350" height="400">
+			<img src="/static/mc3.webp" style="width:100%" width="350" height="400">
 		  </div>
 		</div>
 		<br>
 		<br>
-        <h1>欢迎</h1>
+		<div class="alert alert-success" role="alert">
+		  <h4 class="alert-heading">欢迎!</h4>
+		  <p>此墙是挑选C站精品转载过来的（如有不喜，联系qq：3445205294删除或C站搜索陈溯联系我）</p>
+		  <hr>
+		  <p class="mb-0">投稿请联系我！qq：3445205294删除或C站搜索陈溯联系我</p>
+		  <p class="mb-0">还在开发中！功能可能欠缺！</p>
+		</div>
+		<div class="row">
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/assets/15f717aedb110bf74d2aa784fedc7575.jpg?x-oss-process=image/resize,w_750/format,webp" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#教程#如何任意修改网页内容</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/33880269">白</a></p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=19393334&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 15 days ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/assets/994cef8e68b50fc52b02d76bd8e6ce64.jpg?x-oss-process=image/resize,w_750/format,webp" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#粒子旋涡特效（拿去做封面）</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/23588936">vivi晴</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=40447149&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 20 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/assets/2798b916119b7ad1ccd4323d90729742.gif?x-oss-process=image/resize,w_750/format,webp" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#THW 教程 逻辑系统</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/2731368">林林</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=48161892&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 22 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/python_assets/5336ff5cbdb0b364ba0ef505fc77b085.png" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#转载#MC农场主2.0</h5>
+						<p class="card-text">该作品原作者不明</p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=scratch&pid=23630347&version=3.0&langType=scratch">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 21 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#仿真计算器</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49457919&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#源码破解器5.0网页版</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49758773&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+				  <div class="row no-gutters">
+					<div class="col-md-4">
+					  <img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
+					</div>
+					<div class="col-md-8">
+					  <div class="card-body">
+						<h5 class="card-title">#原创#源码破解器5.0（有UI）</h5>
+						<p class="card-text">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
+						<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49758545&version=offline&form=python&langType=python">点此处跳转</a>
+						<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+						<p class="card-y=text"><small class="text-muted"><a href="https://livefile.xesimg.com/programme/python_assets/85230b692f2397dbfcae05d5e9dd0524.exe">下载</a>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-3">
+				<div class="card mb-3" style="max-width: 540px;">
+					<div class="row no-gutters">
+						<div class="col-md-4">
+							<img src="https://livefile.xesimg.com/programme/python_assets/75c24dcb2a357581a9dcbf7b34ee7f3f.png" width="120" height="190">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title" style="color:blue">#原创#加密程序（有ui）</h5>
+								<h6>
+									<p class="card-text" style="color:red;">转载自 <a href="https://code.xueersi.com/space/8582930">陈溯</a> </p>
+									<a href="https://code.xueersi.com/home/project/detail?lang=code&pid=49768603&version=offline&form=python&langType=python">点此处跳转</a>
+									<p class="card-text"><small class="text-muted">Last updated 2 mins ago</small></p>
+									<p class="card-y=text"><small class="text-muted"><a href="https://livefile.xesimg.com/programme/python_assets/5336385511d3db0d78706c4b61f0ec55.exe">下载</a>
+								</h6>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
     </div>
 	
 	
@@ -362,42 +512,24 @@
 		<h3 class="c">或者精通一种语言即可</h3>
 		<h2 style="color:red" class="c">注意scratch为工作室成员必会语言不算在精通之内</h2>
 		<h2 class="c">工作室logo</h2>
-		<img src="/next/static/deqecraft.png">
+		<img src="/static/deqecraft.png">
 	</div>
 	
-	<!--<div id="myself" class="tab-content" style="background-repeat:no-repeat;opacity:0.8;color:blue;text-align: center;background-repeat:no-repeat;} ">-->
+	<div id="myself" class="tab-content" style="background-repeat:no-repeat;opacity:0.8;color:blue;text-align: center;background-repeat:no-repeat;} ">
 	    <!--;background-image:url('/1h.webp')-->
-	<!--	<h2 class = "orange">qq:3445025294</h2>-->
-	<!--	<h2 class = "orange">目前在玩的mc服务器:</h2>-->
-	<!--	<h3 class = "orange">xing-yue.top(已死)</h3>-->
-	<!--	<h3 class = "orange">MC.LTD</h3>-->
-	<!--	<h3 class = "orange">wdsj.net</h3>-->
-	<!--	<h2>我会的语言~</h2>-->
-	<!--	<h3>c++(入门%10)</h3>-->
-	<!--	<h3>JavaScript(入门%40)</h3>-->
-	<!--	<h3>CSS(入门%40)</h3>-->
-	<!--	<h3>html(精通%70)</h3>-->
-	<!--	<h3>Python(精通%60)</h3>-->
-	<!--	<h3>scratch(精通%50)</h3>-->
-	<!--</div>-->
-    <style>
-        footer {
-        background-color: #333;
-        color: #fff;
-        padding: 20px;
-        text-align: center;
-        }
-    
-        footer a {
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-        }
-    </style>
-    <footer>
-        <p>&copy; 2023 版权所有陈溯&deqecraft<br>deqecraft工作室</p>
-        <a href="#">返回顶部</a>
-    </footer>
+		<h2 class = "orange">qq:3445025294</h2>
+		<h2 class = "orange">目前在玩的mc服务器:</h2>
+		<h3 class = "orange">xing-yue.top(已死)</h3>
+		<h3 class = "orange">MC.LTD</h3>
+		<h3 class = "orange">wdsj.net</h3>
+		<h2>我会的语言~</h2>
+		<h3>c++(入门%10)</h3>
+		<h3>JavaScript(入门%40)</h3>
+		<h3>CSS(入门%40)</h3>
+		<h3>html(精通%70)</h3>
+		<h3>Python(精通%60)</h3>
+		<h3>scratch(精通%50)</h3>
+	</div>
     <script>
         function switchTab(event, tabId) {
             // 阻止默认链接行为
@@ -412,17 +544,17 @@
             // 显示当前选中的选项卡内容
             document.getElementById(tabId).classList.add("active");
         }
-        // var cur = new Date();
-        // var year = cur.getYear();
-        // var months = cur.getMonth();
-        // var day = cur.getDate();
-        // var hours = cur.getHours();
-        // var se = cur.getMinutes();
-        // var de = cur.getSeconds();
-        // alert("欢迎来到我的个人主页!")
-        // alert("现在时间"+(months+1)+"月"+day+"日"+hours+"时"+se+"分"+de+"秒");
-        // alert("本作品因为背景图和bootstrap加载可能会很慢请稍等")
-        // alert("太慢？复制该网址进入备用线路：https://chensu.my.enjoycode.com")
+        var cur = new Date();
+        var year = cur.getYear();
+        var months = cur.getMonth();
+        var day = cur.getDate();
+        var hours = cur.getHours();
+        var se = cur.getMinutes();
+        var de = cur.getSeconds();
+        alert("欢迎来到我的个人主页!")
+        alert("现在时间"+(months+1)+"月"+day+"日"+hours+"时"+se+"分"+de+"秒");
+        alert("本作品因为背景图和bootstrap加载可能会很慢请稍等")
+        alert("太慢？复制该网址进入备用线路：https://chensu.my.enjoycode.com")
 		  var slideIndex = 0;
 		  showSlides();
 		function showSlides() {
@@ -437,7 +569,7 @@
 			setTimeout(showSlides, 2000); // 切换时间间隔为 2 秒
 		}
     </script>
-    <script src="/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/Bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
