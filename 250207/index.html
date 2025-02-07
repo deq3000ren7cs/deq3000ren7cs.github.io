@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>deq3000ren Blog</title>
+    <title>如何在本地部署deepseek-r1蒸馏模型</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -12,9 +12,9 @@
             padding: 0;
             background-color: #000020; /* 深蓝色背景，模拟星空 */
             color: #e0e0e0; /* 浅灰色文字 */
-            overflow: hidden; /* 防止滚动条出现 */
             position: relative; /* 设置相对定位 */
         }
+        
         .header {
             color: #e0e0e0; /* 浅灰色文字 */
             padding: 10px 20px;
@@ -61,28 +61,6 @@
             position: relative;
             z-index: 5; /* 确保内容在星空之上 */
         }
-        .article {
-            margin-bottom: 40px;
-            border-bottom: 1px solid #333333; /* 深灰色边框 */
-            padding-bottom: 20px;
-        }
-        .article:last-child {
-            border-bottom: none;
-        }
-        .article h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #e0e0e0; /* 浅灰色标题 */
-        }
-        .article .meta {
-            font-size: 14px;
-            color: #888888; /* 深灰色辅助文字 */
-            margin-bottom: 10px;
-        }
-        .article p {
-            font-size: 16px;
-            line-height: 1.6;
-        }
         .footer {
             background: linear-gradient(270deg, #333333, #1a1a1a); /* 深灰色渐变背景 */
             color: #e0e0e0; /* 浅灰色文字 */
@@ -106,6 +84,37 @@
             height: 100%;
             z-index: 1; /* 确保星空在所有内容之下 */
         }
+        .article {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+        .article:last-child {
+            border-bottom: none;
+        }
+        .article h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .article .meta {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .article p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .video-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .video-container video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -116,16 +125,64 @@
             <a href="https://deq3000ren7cs.github.io"><i class="fa-solid fa-house"></i></a>
         </ul>
     </div>
-
+    
     <div class="container">
         <div class="article">
-            <h2><a href="/250207">如何在本地部署deepseek-r1蒸馏模型</a></h2>
+            <h1>如何在本地部署deepseek-r1蒸馏模型</h1>
             <div class="meta">
                 Publisher <strong>deq3000ren</strong>  on <time datetime="2025-02-07">February 7, 2025</time>
             </div>
-            <p>本教程将详细介绍如何在本地环境中使用Ollama框架部署DeepSeek-R1蒸馏模型。通过简单的步骤，你可以在Windows系统上快速搭建并运行DeepSeek模型，满足日常需求。</p>
+            <h2>ollama+deepseek</h2><h4>本文章以windows系统为基础写的教程，其他系统用户请移步</h4>
+            <p>本地部署deepseek-r1我推荐使用ollama框架，这篇文章我也仅给出ollama+deepseek这一个部署方案</p>
+        </div>
+
+        <div class="article">
+            <h2>第一步：部署框架</h2>
+            <p>前去<a href="https://ollama.com/">ollama官网</a>下载，选择windows系统下载，下载完后进行安装，步骤：install-next-next-next一直下一步即可，安装完后win键+R，输入cmd，打开命令行窗口输入ollama，显示和视频里一样，即是安装成功，由于模型安装路径默认在C盘（系统盘）所以我们需要改路径到空间较多的盘（C盘空间富余的同学自选），右键任务栏，点击搜索，点击显示搜索图标回到任务栏，点击搜索图标，输入path，点击编辑系统环境变量，点击环境变量，在系统变量下新建一个名字叫OLLAMA_MODELS的变量，值为模型的储存路径，新建好后一直点确定即可</p>
+            <pre><code>
+                <div class="video-container">
+                    <video autoplay loop muted controls>
+                        <source src="https://livefile.xesimg.com/programme/python_assets/cd6c02d491b64aa05ef64a1b869105d2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        您的浏览器不支持 video 标签。
+                    </video>
+                </div>
+            </code></pre>
+        </div>
+
+        <div class="article">
+            <h2>第二步：下载模型</h2>
+            <p>回到<a href="https://ollama.com/">ollama官网</a>，点击上方有着“Search models”提示词的搜索框，输入deepseek-r1，点击第一个，进入页面后，在左边的选择框中选择自己硬件适合的模型，671B是这个ollama上提供的deepseek最强模型，也是deepseek官网上能体验到的最强的模型，此模型需要404GB储存空间，所需要的显存也是十分多，32b和70b的模型的效果完全能满足日常需求，我估计了下，内存大概需要64GB显存24，咱就看看吧，视频以7B模型为例，复制右侧的代码按win键+R，输入cmd，打开命令行窗口，粘贴，它会自动下载模型（小编这里已经下载好了，仅参考步骤）</p>
+            <pre><code>
+            注意1.5B模型4GB显存就可以跑，7B，8B则需要8GB最少6GB显存，32B需要24GB，70B 未知 671B未知
+            根据自己硬件情况选择模型
+                <div class="video-container">
+                    <video autoplay loop muted controls>
+                        <source src="https://livefile.xesimg.com/programme/python_assets/521276ae7e957b02394736d60a33a00d.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        您的浏览器不支持 video 标签。
+                    </video>
+                </div>
+            </pre></code>
+        </div>
+
+        <div class="article">
+            <h2>运行模型</h2>
+            <p>win键+R输入cmd，输入ollama list，找到自己想运行的模型，复制最左边的那列，也就是模型名称，输入ollama run 粘贴模型名称，稍等片刻即可对话</p>
+            <pre><code>
+            注意1.5B模型4GB显存就可以跑，7B，8B则需要8GB最少6GB显存，32B需要24GB，70B 未知 671B未知
+            根据自己硬件情况选择模型
+                <div class="video-container">
+                    <video autoplay loop muted controls>
+                        <source src="https://livefile.xesimg.com/programme/python_assets/3fb73f8497a1b7c68a9faba6699e2ff0.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        您的浏览器不支持 video 标签。
+                    </video>
+                </div>
+            </pre></code>
         </div>
     </div>
+
 
     <div class="footer">
         &copy; 2023-2025 deq3000ren Blog. All rights reserved.
